@@ -1,0 +1,200 @@
+[
+  {
+    "name": "GitHub",
+    "url": "https://github.com/{}"
+  },
+  {
+    "name": "Reddit",
+    "url": "https://www.reddit.com/user/{}/about.json"
+  },
+  {
+    "name": "Dev.to",
+    "url": "https://dev.to/{}"
+  },
+  {
+    "name": "GitLab",
+    "url": "https://gitlab.com/{}"
+  },
+  {
+    "name": "Medium",
+    "url": "https://medium.com/@{}"
+  },
+  {
+    "name": "Keybase",
+    "url": "https://keybase.io/{}"
+  },
+  {
+    "name": "HackerNews",
+    "url": "https://news.ycombinator.com/user?id={}",
+    "error_text": "No such user"
+  },
+  {
+    "name": "Pinterest",
+    "url": "https://www.pinterest.com/{}/"
+  },
+  {
+    "name": "Twitch",
+    "url": "https://www.twitch.tv/{}"
+  },
+  {
+    "name": "SoundCloud",
+    "url": "https://soundcloud.com/{}"
+  },
+  {
+    "name": "Replit",
+    "url": "https://replit.com/@{}"
+  },
+  {
+    "name": "Steam",
+    "url": "https://steamcommunity.com/id/{}",
+    "error_text": "The specified profile could not be found"
+  },
+  {
+    "name": "Behance",
+    "url": "https://www.behance.net/{}"
+  },
+  {
+    "name": "Dribbble",
+    "url": "https://dribbble.com/{}"
+  },
+  {
+    "name": "Flickr",
+    "url": "https://www.flickr.com/people/{}"
+  },
+  {
+    "name": "Vimeo",
+    "url": "https://vimeo.com/{}"
+  },
+  {
+    "name": "Patreon",
+    "url": "https://www.patreon.com/{}"
+  },
+  {
+    "name": "Pastebin",
+    "url": "https://pastebin.com/u/{}"
+  },
+  {
+    "name": "Wikipedia",
+    "url": "https://en.wikipedia.org/wiki/User:{}"
+  },
+  {
+    "name": "CodePen",
+    "url": "https://codepen.io/{}"
+  },
+  {
+    "name": "Docker Hub",
+    "url": "https://hub.docker.com/u/{}"
+  },
+  {
+    "name": "npm",
+    "url": "https://www.npmjs.com/~{}"
+  },
+  {
+    "name": "PyPI",
+    "url": "https://pypi.org/user/{}/"
+  },
+  {
+    "name": "Kaggle",
+    "url": "https://www.kaggle.com/{}"
+  },
+  {
+    "name": "LeetCode",
+    "url": "https://leetcode.com/{}/"
+  },
+  {
+    "name": "Chess.com",
+    "url": "https://www.chess.com/member/{}"
+  },
+  {
+    "name": "Lichess",
+    "url": "https://lichess.org/@/{}"
+  },
+  {
+    "name": "Last.fm",
+    "url": "https://www.last.fm/user/{}"
+  },
+  {
+    "name": "Spotify",
+    "url": "https://open.spotify.com/user/{}"
+  },
+  {
+    "name": "Etsy",
+    "url": "https://www.etsy.com/people/{}"
+  },
+  {
+    "name": "Tumblr",
+    "url": "https://{}.tumblr.com"
+  },
+  {
+    "name": "WordPress",
+    "url": "https://{}.wordpress.com"
+  },
+  {
+    "name": "About.me",
+    "url": "https://about.me/{}"
+  },
+  {
+    "name": "Linktree",
+    "url": "https://linktr.ee/{}"
+  },
+  {
+    "name": "Gravatar",
+    "url": "https://gravatar.com/{}"
+  },
+  {
+    "name": "Imgur",
+    "url": "https://imgur.com/user/{}"
+  },
+  {
+    "name": "Bitbucket",
+    "url": "https://bitbucket.org/{}/"
+  },
+  {
+    "name": "SourceForge",
+    "url": "https://sourceforge.net/u/{}/"
+  },
+  {
+    "name": "Codeberg",
+    "url": "https://codeberg.org/{}"
+  },
+  {
+    "name": "Mastodon.social",
+    "url": "https://mastodon.social/@{}"
+  },
+  {
+    "name": "Bluesky",
+    "url": "https://bsky.app/profile/{}.bsky.social"
+  },
+  {
+    "name": "HackerOne",
+    "url": "https://hackerone.com/{}"
+  },
+  {
+    "name": "Product Hunt",
+    "url": "https://www.producthunt.com/@{}"
+  },
+  {
+    "name": "Scratch",
+    "url": "https://scratch.mit.edu/users/{}/"
+  },
+  {
+    "name": "Wattpad",
+    "url": "https://www.wattpad.com/user/{}"
+  },
+  {
+    "name": "itch.io",
+    "url": "https://{}.itch.io"
+  },
+  {
+    "name": "YouTube",
+    "url": "https://www.youtube.com/@{}"
+  },
+  {
+    "name": "Snapchat",
+    "url": "https://www.snapchat.com/add/{}"
+  },
+  {
+    "name": "Roblox",
+    "url": "https://www.roblox.com/user.aspx?username={}"
+  }
+]

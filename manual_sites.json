@@ -1,0 +1,7 @@
+[
+  {"name": "Instagram", "url": "https://www.instagram.com/{}/"},
+  {"name": "TikTok", "url": "https://www.tiktok.com/@{}"},
+  {"name": "Facebook", "url": "https://www.facebook.com/{}"},
+  {"name": "X (Twitter)", "url": "https://x.com/{}"},
+  {"name": "Xbox (3rd-party)", "url": "https://www.xboxgamertag.com/search/{}"}
+]
