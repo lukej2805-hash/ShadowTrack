@@ -196,5 +196,145 @@
   {
     "name": "Roblox",
     "url": "https://www.roblox.com/user.aspx?username={}"
+  },
+  {
+    "name": "Gitee",
+    "url": "https://gitee.com/{}"
+  },
+  {
+    "name": "Hashnode",
+    "url": "https://hashnode.com/@{}"
+  },
+  {
+    "name": "Hackster",
+    "url": "https://www.hackster.io/{}"
+  },
+  {
+    "name": "Instructables",
+    "url": "https://www.instructables.com/member/{}/"
+  },
+  {
+    "name": "Launchpad",
+    "url": "https://launchpad.net/~{}"
+  },
+  {
+    "name": "Packagist",
+    "url": "https://packagist.org/users/{}/"
+  },
+  {
+    "name": "RubyGems",
+    "url": "https://rubygems.org/profiles/{}"
+  },
+  {
+    "name": "Codewars",
+    "url": "https://www.codewars.com/users/{}"
+  },
+  {
+    "name": "Exercism",
+    "url": "https://exercism.org/profiles/{}"
+  },
+  {
+    "name": "Hackaday",
+    "url": "https://hackaday.io/{}"
+  },
+  {
+    "name": "TryHackMe",
+    "url": "https://tryhackme.com/p/{}"
+  },
+  {
+    "name": "Duolingo",
+    "url": "https://www.duolingo.com/profile/{}"
+  },
+  {
+    "name": "Ko-fi",
+    "url": "https://ko-fi.com/{}"
+  },
+  {
+    "name": "Buy Me a Coffee",
+    "url": "https://buymeacoffee.com/{}"
+  },
+  {
+    "name": "Substack",
+    "url": "https://{}.substack.com"
+  },
+  {
+    "name": "Gumroad",
+    "url": "https://{}.gumroad.com"
+  },
+  {
+    "name": "Letterboxd",
+    "url": "https://letterboxd.com/{}/"
+  },
+  {
+    "name": "MyAnimeList",
+    "url": "https://myanimelist.net/profile/{}"
+  },
+  {
+    "name": "AniList",
+    "url": "https://anilist.co/user/{}"
+  },
+  {
+    "name": "Genius",
+    "url": "https://genius.com/{}"
+  },
+  {
+    "name": "Bandcamp",
+    "url": "https://bandcamp.com/{}"
+  },
+  {
+    "name": "Mixcloud",
+    "url": "https://www.mixcloud.com/{}/"
+  },
+  {
+    "name": "Audiomack",
+    "url": "https://audiomack.com/{}"
+  },
+  {
+    "name": "ReverbNation",
+    "url": "https://www.reverbnation.com/{}"
+  },
+  {
+    "name": "Newgrounds",
+    "url": "https://{}.newgrounds.com"
+  },
+  {
+    "name": "DeviantArt",
+    "url": "https://www.deviantart.com/{}"
+  },
+  {
+    "name": "ArtStation",
+    "url": "https://www.artstation.com/{}"
+  },
+  {
+    "name": "Unsplash",
+    "url": "https://unsplash.com/@{}"
+  },
+  {
+    "name": "500px",
+    "url": "https://500px.com/p/{}"
+  },
+  {
+    "name": "Giphy",
+    "url": "https://giphy.com/{}"
+  },
+  {
+    "name": "Speedrun.com",
+    "url": "https://www.speedrun.com/users/{}"
+  },
+  {
+    "name": "NameMC",
+    "url": "https://namemc.com/profile/{}"
+  },
+  {
+    "name": "Internet Archive",
+    "url": "https://archive.org/details/@{}"
+  },
+  {
+    "name": "Trello",
+    "url": "https://trello.com/{}"
+  },
+  {
+    "name": "Freelancer",
+    "url": "https://www.freelancer.com/u/{}"
   }
 ]

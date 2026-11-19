@@ -11,7 +11,9 @@ import asyncio
 import hashlib
 import json
 import os
+import random
 import re
+import string
 import sys
 
 import httpx
@@ -32,17 +34,82 @@ def detect_type(value: str) -> str:
 
 
 # ---------- username ----------
+BLOCKED = {401, 403, 429, 999}
+TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.I | re.S)
+
+
+def random_name():
+    """A username that almost certainly doesn't exist, used as a control."""
+    return "zx" + "".join(random.choices(string.ascii_lowercase + string.digits, k=12))
+
+
+def norm(text, name):
+    """Replace the username with a placeholder so pages can be compared."""
+    return re.sub(re.escape(name), "{u}", text, flags=re.I)
+
+
+def get_title(html, name):
+    m = TITLE_RE.search(html)
+    return norm(m.group(1).strip(), name).lower() if m else ""
+
+
+async def fetch(client, sem, url):
+    """GET with one retry on network errors, 429 and 5xx."""
+    async with sem:
+        for attempt in range(2):
+            try:
+                r = await client.get(url, follow_redirects=True, timeout=10)
+            except httpx.HTTPError:
+                if attempt == 1:
+                    return None
+                await asyncio.sleep(1)
+                continue
+            if r.status_code in (429, 500, 502, 503) and attempt == 0:
+                await asyncio.sleep(1.5)
+                continue
+            return r
+    return None
+
+
+def compare(r, user, b, fake):
+    """Compare the real-username page with the fake-username control page."""
+    final = norm(str(r.url), user)
+    # Both redirected to the same place that doesn't contain the username
+    if r.history and b.history and final == norm(str(b.url), fake) and "{u}" not in final:
+        return "not found"
+    # Different page titles: the real one is a real page
+    if get_title(r.text, user) != get_title(b.text, fake):
+        return "found"
+    # Same title and about the same size: site gives the same page for everyone
+    fl, bl = len(r.text), len(b.text)
+    if abs(fl - bl) <= 0.05 * max(fl, bl, 1):
+        return "unverifiable"
+    return "uncertain"
+
+
 async def check_site(client, sem, site, username):
     url = site["url"].format(username)
-    async with sem:
-        try:
-            r = await client.get(url, follow_redirects=True, timeout=10)
-        except httpx.HTTPError:
-            return {"site": site["name"], "url": url, "status": "error"}
-    found = r.status_code == 200
-    if found and site.get("error_text"):
-        found = site["error_text"] not in r.text
-    return {"site": site["name"], "url": url, "status": "found" if found else "not found"}
+    result = {"site": site["name"], "url": url}
+    r = await fetch(client, sem, url)
+    if r is None or r.status_code in BLOCKED or r.status_code >= 500:
+        return {**result, "status": "error"}
+    if r.status_code != 200:
+        return {**result, "status": "not found"}
+
+    # Explicit per-site rules win
+    if site.get("error_text"):
+        return {**result, "status": "not found" if site["error_text"] in r.text else "found"}
+    if site.get("found_text"):
+        return {**result, "status": "found" if site["found_text"] in r.text else "not found"}
+
+    # Otherwise run a control check with a random username
+    fake = random_name()
+    b = await fetch(client, sem, site["url"].format(fake))
+    if b is None or b.status_code in BLOCKED or b.status_code >= 500:
+        return {**result, "status": "uncertain"}
+    if b.status_code != 200:
+        return {**result, "status": "found"}  # site 404s on missing users, so 200 is real
+    return {**result, "status": compare(r, username, b, fake)}
 
 
 async def search_username(username):
@@ -106,10 +173,16 @@ def search_phone(raw, default_region="GB"):
 # ---------- output ----------
 def print_username(results):
     found = [r for r in results if r["status"] == "found"]
+    unsure = [r for r in results if r["status"] in ("uncertain", "unverifiable")]
+    errors = [r["site"] for r in results if r["status"] == "error"]
     for r in found:
         print(f"[+] {r['site']}: {r['url']}")
-    errors = [r["site"] for r in results if r["status"] == "error"]
-    print(f"\n{len(found)} found, {len(errors)} errored" + (f" ({', '.join(errors)})" if errors else ""))
+    if unsure:
+        print("\nCouldn't verify automatically (open to check):")
+        for r in unsure:
+            print(f"[?] {r['site']}: {r['url']}")
+    print(f"\n{len(found)} found, {len(unsure)} unverified, {len(errors)} errored"
+          + (f" ({', '.join(errors)})" if errors else ""))
 
 
 def print_manual(username):

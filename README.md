@@ -24,6 +24,13 @@ Options:
     --json            print raw JSON instead of readable text
     --region GB       default country for phone numbers without a + prefix
 
+### Web interface
+Prefer a UI? Run the local web app and open http://127.0.0.1:5000 in your browser:
+
+    python app.py
+
+It only listens on your own computer, so nobody else on your network can reach it.
+
 ### Example output
     $ python lookup.py johndoe
 
@@ -55,12 +62,15 @@ To include Have I Been Pwned breach results for emails, set your own API key fir
 
 Without a key, the breach check is skipped and everything else still works. Never commit your key to the repo.
 
+## How accuracy works
+For each site, ShadowTrack also checks a random username that can't exist and compares the two pages. If the site gives the same page for everyone, the result is marked `[?]` (couldn't verify) instead of a false "found". Sites that block bots are reported as errors, not guesses.
+
 ## Adding sites
-- `sites.json`: sites checked automatically. `{}` is replaced by the username. Add `"error_text"` for sites that return 200 even when the user doesn't exist.
+- `sites.json`: sites checked automatically. `{}` is replaced by the username. Optional per-site rules: `"error_text"` (text shown when the user doesn't exist) or `"found_text"` (text that must appear when they do).
 - `manual_sites.json`: sites that block bots. These are printed as links for you to open yourself.
 
 ## Limitations
-- Results can include false positives or misses if a site changes how it responds.
+- Results can still be wrong if a site changes how it responds. `[?]` results need a manual look.
 - Phone numbers can only be validated and described, not matched to accounts.
 - Email-derived username matches may belong to a different person.
 
